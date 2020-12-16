@@ -12,7 +12,8 @@
 
 #include <iostream>
 
-const std::string kHelpText = "./cripto -- Cifrado de ficheros\n\
+const std::string kHelpText =
+"./cripto -- Cifrado de ficheros\n\
 Modo de uso: ./cripto fichero_entrada fichero_salida método password operación\n\n\
 fichero_entrada: Fichero a codificar\n\
 fichero_salida:  Fichero codificado\n\
@@ -28,5 +29,7 @@ void Usage(int argc, char *argv[]);
 bool IsFileOpen(std::string input_file);
 void EncryptCesar(std::string input_file, std::string output_file, int key);
 void DecryptCesar(std::string input_file, std::string output_file, int key);
-void EncryptXor(std::string input_file, std::string output_file, std::string password, const int KconstNumber);
-void DecryptXor(std::string input_file, std::string output_file, std::string password, const int KconstNumber);
+void EncryptXor(std::string input_file, std::string output_file,
+                std::string password, const int KconstNumber);
+void DecryptXor(std::string input_file, std::string output_file,
+                std::string password, const int KconstNumber);

@@ -6,18 +6,19 @@
  *
  * @author Gabriel Jonay Vera Estévez
  * @date 16/12/2020
- * @brief A través del metodo XOR y CESAR podemos encriptar y desencriptar textos que sean pasados al usuario.
+ * @brief A través del metodo XOR y CESAR podemos encriptar y desencriptar
+ * textos que sean pasados al usuario.
  * @see https://www.learncpp.com/cpp-tutorial/bitwise-operators/
  *
  */
 
-#include <iostream>
+#include "cripto.h"
+
 #include <cstdlib>
 #include <fstream>
+#include <iostream>
+#include <string>  // exit
 #include <vector>
-#include <string>    // exit
-
-#include "cripto.h"    
 
 /** Muestra el modo de uso correcto del programa
  *  En caso de que el uso no sea el correcto, muestra el mensaje y finaliza
@@ -29,8 +30,8 @@
  */
 void Usage(int argc, char *argv[]) {
   if (argc != 6) {
-    if(argc == 2){
-        std::string parameter{argv[1]};
+    if (argc == 2) {
+      std::string parameter{argv[1]};
       if (parameter == "--help") {
         std::cout << kHelpText << std::endl;
         exit(EXIT_SUCCESS);
@@ -38,20 +39,21 @@ void Usage(int argc, char *argv[]) {
     }
 
     std::cout << argv[0] << "-- Cifrado de ficheros\n";
-    std::cout << "Modo de uso: ./cripto fichero_entrada fichero_salida método password operación\n";
-    std::cout << "Pruebe " << argv[0] << " --help para más información" << std::endl;
+    std::cout << "Modo de uso: ./cripto fichero_entrada fichero_salida método "
+                 "password operación\n";
+    std::cout << "Pruebe " << argv[0] << " --help para más información"
+              << std::endl;
     exit(EXIT_SUCCESS);
   }
 }
 
 /**
  *
- * 
+ *
  */
 
-bool IsFileOpen(std::string input_file){
-
-    std::ifstream input{ input_file };
+bool IsFileOpen(std::string input_file) {
+  std::ifstream input{input_file};
 
   if (!input) {
     std::cerr << "No se pude abir el fichero\n";
@@ -59,107 +61,83 @@ bool IsFileOpen(std::string input_file){
   }
   return true;
 }
- 
 
-/** Devuelve el valor de la suma de todos los términos de valor par de la serie de
- *  Fibonacci menores que kLimit
+/** Devuelve el valor de la suma de todos los términos de valor par de la serie
+ * de Fibonacci menores que kLimit
  *
  *  @param[in] kLimit. Se suman los términos pares menores que kLimit
  *  @return La suma de los términos pares menores que kLimit
  */
-void EncryptCesar(std::string input_file, std::string output_file, int key){
-
+void EncryptCesar(std::string input_file, std::string output_file, int key) {
   std::ifstream input{input_file};
   std::ofstream output{output_file};
 
-  while(input){
-
+  while (input) {
     std::string string_input;
     std::getline(input, string_input);
-    for(unsigned int i = 0; i < string_input.length(); ++i){
+    for (unsigned int i = 0; i < string_input.length(); ++i) {
       string_input[i] += key;
     }
     output << string_input << std::endl;
   }
 }
 
-/** Devuelve el valor de la suma de todos los términos de valor par de la serie de
- *  Fibonacci menores que kLimit
+/** Devuelve el valor de la suma de todos los términos de valor par de la serie
+ * de Fibonacci menores que kLimit
  *
  *  @param[in] kLimit. Se suman los términos pares menores que kLimit
  *  @return La suma de los términos pares menores que kLimit
  */
-void DecryptCesar(std::string input_file, std::string output_file, int key){
-
+void DecryptCesar(std::string input_file, std::string output_file, int key) {
   std::ifstream input{input_file};
   std::ofstream output{output_file};
 
-  while(input){
-
+  while (input) {
     std::string string_input;
     std::getline(input, string_input);
-    for(unsigned int i = 0; i < string_input.length(); ++i){
+    for (unsigned int i = 0; i < string_input.length(); ++i) {
       string_input[i] -= key;
     }
     output << string_input << std::endl;
   }
 }
 
-void DecryptXor(std::string input_file, std::string output_file, std::string password, const int KconstNumber){
-
-  for(unsigned int i = 0; i > password.length(); ++i){
+void DecryptXor(std::string input_file, std::string output_file,
+                std::string password, const int KconstNumber) {
+  for (unsigned int i = 0; i > password.length(); ++i) {
     password[i] ^= KconstNumber;
   }
 
   std::ifstream input{input_file};
   std::ofstream output{output_file};
 
-  while(input){
-
+  while (input) {
     std::string string_input;
     std::getline(input, string_input);
 
-    for(unsigned int i = 0; i < password.length(); ++i){
-
-      for(unsigned int u = 0; i < string_input.length(); ++u){
-      string_input[u] ^= password[i];
-      }
-      output << string_input << std::endl;
-      if(i == string_input.length()-1){
-        i = 0;
-      }
+    for (unsigned int i = 0; i < string_input.length(); ++i) {
+      string_input[i] ^= password[i % password.length() - 1];
     }
+    output << string_input << std::endl;
   }
-
 }
 
-void EncryptXor(std::string input_file, std::string output_file, std::string password, const int KconstNumber){
-
-  for(unsigned int i = 0; i > password.length(); ++i){
+void EncryptXor(std::string input_file, std::string output_file,
+                std::string password, const int KconstNumber) {
+  for (unsigned int i = 0; i > password.length(); ++i) {
     password[i] ^= KconstNumber;
   }
-
-
 
   std::ifstream input{input_file};
   std::ofstream output{output_file};
 
-
-  while(input){
-
+  while (input) {
     std::string string_input;
     std::getline(input, string_input);
 
-    for(unsigned int i = 0; i < password.length(); ++i){
-            std::cout << string_input << std::endl;
-      for(unsigned int u = 0; i < string_input.length(); ++u){
-        string_input[u] ^= password[i];
-      }
-
-      output << string_input << std::endl;
-      if(i == string_input.length()-1){
-        i = 0;
-      }
-    } 
+    for (unsigned int i = 0; i < string_input.length(); ++i) {
+      string_input[i] ^= password[i % password.length() - 1];
+    }
+    output << string_input << std::endl;
   }
 }
