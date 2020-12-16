@@ -18,7 +18,6 @@
 #include <fstream>
 #include <iostream>
 #include <string>  // exit
-#include <vector>
 
 /** Muestra el modo de uso correcto del programa
  *  En caso de que el uso no sea el correcto, muestra el mensaje y finaliza
@@ -47,9 +46,11 @@ void Usage(int argc, char *argv[]) {
   }
 }
 
-/**
+/** Encripta la información del archivo suministrado mediante el metodo CESAR
  *
- *
+ *  @param[in] input_file. Objeto stream que abre el archivo a encriptar.
+ *  @return Devuelve 'true' si el archivo se pudo abrir, de lo contrario
+ * devuelve 'false'.
  */
 
 bool IsFileOpen(std::string input_file) {
@@ -62,11 +63,14 @@ bool IsFileOpen(std::string input_file) {
   return true;
 }
 
-/** Devuelve el valor de la suma de todos los términos de valor par de la serie
- * de Fibonacci menores que kLimit
+/** Encripta la información del archivo suministrado mediante el metodo CESAR
  *
- *  @param[in] kLimit. Se suman los términos pares menores que kLimit
- *  @return La suma de los términos pares menores que kLimit
+ *  @param[in] input_file. Objeto stream que abre el archivo a encriptar.
+ *  @param[in] output_file. Objeto stream que abre el archivo donde escribir el
+ * codigo encriptado.
+ *  @param[in] key. Clave de encriptación del metodo CESAR.
+ *  @return No retorna ningún valor, función void, crea un nuevo archivo
+ * encriptado.
  */
 void EncryptCesar(std::string input_file, std::string output_file, int key) {
   std::ifstream input{input_file};
@@ -82,11 +86,14 @@ void EncryptCesar(std::string input_file, std::string output_file, int key) {
   }
 }
 
-/** Devuelve el valor de la suma de todos los términos de valor par de la serie
- * de Fibonacci menores que kLimit
+/** Encripta la información del archivo suministrado mediante el metodo CESAR
  *
- *  @param[in] kLimit. Se suman los términos pares menores que kLimit
- *  @return La suma de los términos pares menores que kLimit
+ *  @param[in] input_file. Objeto stream que abre el archivo a desencriptar.
+ *  @param[in] output_file. Objeto stream que abre el archivo donde escribir el
+ * codigo desencriptado.
+ *  @param[in] key. Clave de encriptación del metodo CESAR.
+ *  @return No retorna ningún valor, función void, crea un nuevo archivo
+ * desencriptado.
  */
 void DecryptCesar(std::string input_file, std::string output_file, int key) {
   std::ifstream input{input_file};
@@ -102,6 +109,15 @@ void DecryptCesar(std::string input_file, std::string output_file, int key) {
   }
 }
 
+/** Encripta la información del archivo suministrado mediante el metodo XOR
+ *
+ *  @param[in] input_file. Objeto stream que abre el archivo a desencriptar.
+ *  @param[in] output_file. Objeto stream que abre el archivo donde escribir el
+ * codigo desencriptado.
+ *  @param[in] password. Clave de encriptación del metodo XOR.
+ *  @return No retorna ningún valor, función void, crea un nuevo archivo
+ * desencriptado.
+ */
 void DecryptXor(std::string input_file, std::string output_file,
                 std::string password, const int KconstNumber) {
   for (unsigned int i = 0; i > password.length(); ++i) {
@@ -122,6 +138,15 @@ void DecryptXor(std::string input_file, std::string output_file,
   }
 }
 
+/** Encripta la información del archivo suministrado mediante el metodo XOR
+ *
+ *  @param[in] input_file. Objeto stream que abre el archivo a encriptar.
+ *  @param[in] output_file. Objeto stream que abre el archivo donde escribir el
+ * codigo encriptado.
+ *  @param[in] key. Clave de encriptación del metodo XOR.
+ *  @return No retorna ningún valor, función void, crea un nuevo archivo
+ * encriptado.
+ */
 void EncryptXor(std::string input_file, std::string output_file,
                 std::string password, const int KconstNumber) {
   for (unsigned int i = 0; i > password.length(); ++i) {

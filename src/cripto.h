@@ -13,7 +13,7 @@
 #include <iostream>
 
 const std::string kHelpText =
-"./cripto -- Cifrado de ficheros\n\
+    "./cripto -- Cifrado de ficheros\n\
 Modo de uso: ./cripto fichero_entrada fichero_salida método password operación\n\n\
 fichero_entrada: Fichero a codificar\n\
 fichero_salida:  Fichero codificado\n\

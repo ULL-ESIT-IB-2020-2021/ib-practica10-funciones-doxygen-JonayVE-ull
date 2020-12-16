@@ -22,7 +22,6 @@
 #include <fstream>  /// exit
 #include <iostream>
 #include <string>
-#include <vector>
 
 #include "cripto.h"
 
@@ -44,7 +43,7 @@ int main(int argc, char* argv[]) {
   IsFileOpen(input_file);
 
   if (operation == '+') {
-    if (method =='2') {
+    if (method == '2') {
       key = std::stoi(password);
       EncryptCesar(input_file, output_file, key);
     } else if (method == '1') {
