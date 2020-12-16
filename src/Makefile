@@ -3,8 +3,8 @@
 # Grado en Ingeniería Informática
 # Informática Básica
 #
-# @author F. de Sande
-# @date 17 nov 2020
+# @author Gabriel Jonay Vera Estévevz
+# @date 16 dic 2020
 # @brief A Makefile example for HelloWorld program
 # 
 
