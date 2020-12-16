@@ -18,18 +18,50 @@
  */
 
 #include <iostream>
-#include <cstdlib>    /// exit
+#include <vector>
+#include <string>
+#include <fstream>   /// exit
 
-#include "fibonacci_sum.h"    
+#include "cripto.h"    
 
 /** Main function
  *  @param[in] argc Number of command line parameters
  *  @param[in] argv Vector containing (char*) the parameters
  */
 int main (int argc, char* argv[]) {
+
   Usage(argc, argv);
-  std::string limit = argv[1];
-  const size_t kLimit = stoi(limit);
-  std::cout << "Sum: " << fibonacci_sum(kLimit) << std::endl; 
+
+  std::string input_file = argv[1];
+  std::string output_file = argv[2];
+  std::string method = argv[3];
+  std::string password = argv[4];
+  int key{0};
+  std::string operation = argv[5];
+  const int KconstNumber = 128;
+
+  IsFileOpen(input_file);
+
+  if(operation == "encriptar"){
+
+    if(method == "cifrado_cesar"){
+      key = std::stoi(password);
+      EncryptCesar(input_file, output_file, key);
+    }else if(method == "cifrado_xor"){
+      EncryptXor(input_file, output_file, password, KconstNumber);
+    }
+  }else if(operation == "desencriptar"){
+
+    if(method == "cifrado_cesar"){
+      key = std::stoi(password);
+      DecryptCesar(input_file, output_file, key);
+    }else if(method == "cifrado_xor"){
+      DecryptXor(input_file, output_file, password, KconstNumber);
+    }
+  }
+
+
+
+  
   return 0;
 }
