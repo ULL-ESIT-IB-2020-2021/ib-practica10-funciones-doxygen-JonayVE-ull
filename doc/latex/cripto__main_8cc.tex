@@ -1,0 +1,90 @@
+\hypertarget{cripto__main_8cc}{}\subsection{cripto\+\_\+main.\+cc File Reference}
+\label{cripto__main_8cc}\index{cripto\+\_\+main.\+cc@{cripto\+\_\+main.\+cc}}
+{\ttfamily \#include $<$fstream$>$}\newline
+{\ttfamily \#include $<$iostream$>$}\newline
+{\ttfamily \#include $<$string$>$}\newline
+{\ttfamily \#include \char`\"{}cripto.\+h\char`\"{}}\newline
+Include dependency graph for cripto\+\_\+main.\+cc\+:
+% FIG 0
+\subsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \hyperlink{cripto__main_8cc_a0ddf1224851353fc92bfbff6f499fa97}{main} (int argc, char $\ast$argv\mbox{[}$\,$\mbox{]})
+\begin{DoxyCompactList}\small\item\em Universidad de La Laguna Escuela Superior de Ingeniería y Tecnología Grado en Ingeniería Informática Informática Básica. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsubsection{Function Documentation}
+\mbox{\Hypertarget{cripto__main_8cc_a0ddf1224851353fc92bfbff6f499fa97}\label{cripto__main_8cc_a0ddf1224851353fc92bfbff6f499fa97}} 
+\index{cripto\+\_\+main.\+cc@{cripto\+\_\+main.\+cc}!main@{main}}
+\index{main@{main}!cripto\+\_\+main.\+cc@{cripto\+\_\+main.\+cc}}
+\paragraph{\texorpdfstring{main()}{main()}}
+{\footnotesize\ttfamily int main (\begin{DoxyParamCaption}\item[{int}]{argc,  }\item[{char $\ast$}]{argv\mbox{[}$\,$\mbox{]} }\end{DoxyParamCaption})}
+
+
+
+Universidad de La Laguna Escuela Superior de Ingeniería y Tecnología Grado en Ingeniería Informática Informática Básica. 
+
+\begin{DoxyAuthor}{Author}
+F. de Sande 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+7.\+nov.\+2020 Cada nuevo término de la serie de Fibonacci se genera sumando los dos anteriores. Comenzando con 0 y 1, los primeros 10 términos serán\+: 0, 1, 1, 2, 3, 5, 8, 13, 21, 34 Desarrolle en C++ un programa que calcule la suma de todos los términos de valor par de la serie que sean menores que 1000. 
+\end{DoxyDate}
+\begin{DoxySeeAlso}{See also}
+\href{https://docs.google.com/document/d/1-3hTIVf8tPrbn9u0vs0Cm2IGyX1XBgv8hReVU0KOSUQ/edit?usp=sharing}{\tt https\+://docs.\+google.\+com/document/d/1-\/3h\+T\+I\+Vf8t\+Prbn9u0vs0\+Cm2\+I\+Gy\+X1\+X\+Bgv8h\+Re\+V\+U0\+K\+O\+S\+U\+Q/edit?usp=sharing} 
+
+stoi \href{http://www.cplusplus.com/reference/string/stoi/}{\tt http\+://www.\+cplusplus.\+com/reference/string/stoi/} An Object Oriented Version of the program\+: 
+
+\href{https://stackoverflow.com/questions/21360694/sum-of-even-fibonacci-numbers-under-1000exit}{\tt https\+://stackoverflow.\+com/questions/21360694/sum-\/of-\/even-\/fibonacci-\/numbers-\/under-\/1000exit} Main function 
+\end{DoxySeeAlso}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em argc} & Number of command line parameters \\
+\hline
+\mbox{\tt in}  & {\em argv} & Vector containing (char$\ast$) the parameters \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 32 of file cripto\+\_\+main.\+cc.
+
+
+
+References Decrypt\+Cesar(), Decrypt\+Xor(), Encrypt\+Cesar(), Encrypt\+Xor(), Is\+File\+Open(), and Usage().
+
+
+\begin{DoxyCode}
+32                                  \{
+33   \hyperlink{cripto_8cc_aeac332c082069f54e8769d311dd2049d}{Usage}(argc, argv);
+34 
+35   std::string input\_file = argv[1];
+36   std::string output\_file = argv[2];
+37   \textcolor{keywordtype}{char} method = argv[3][0];
+38   std::string password = argv[4];
+39   \textcolor{keywordtype}{int} key\{0\};
+40   \textcolor{keywordtype}{char} operation = argv[5][0];
+41   \textcolor{keyword}{const} \textcolor{keywordtype}{int} KconstNumber = 128;
+42 
+43   \hyperlink{cripto_8cc_a9599ac690f259e6607e7635cc65764b3}{IsFileOpen}(input\_file);
+44 
+45   \textcolor{keywordflow}{if} (operation == \textcolor{charliteral}{'+'}) \{
+46     \textcolor{keywordflow}{if} (method == \textcolor{charliteral}{'2'}) \{
+47       key = std::stoi(password);
+48       \hyperlink{cripto_8cc_a29b86e425c598edfc5e3d5f9c20c4e32}{EncryptCesar}(input\_file, output\_file, key);
+49     \} \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (method == \textcolor{charliteral}{'1'}) \{
+50       \hyperlink{cripto_8cc_a0cb21f28d228ba7b524709bb1c68ff58}{EncryptXor}(input\_file, output\_file, password, KconstNumber);
+51     \}
+52   \} \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (operation == \textcolor{charliteral}{'-'}) \{
+53     \textcolor{keywordflow}{if} (method == \textcolor{charliteral}{'2'}) \{
+54       key = std::stoi(password);
+55       \hyperlink{cripto_8cc_a68001226130d5aa6479d1f3c1a451866}{DecryptCesar}(input\_file, output\_file, key);
+56     \} \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (method == \textcolor{charliteral}{'1'}) \{
+57       \hyperlink{cripto_8cc_a978ec3033ecb9e318549ac4de493db10}{DecryptXor}(input\_file, output\_file, password, KconstNumber);
+58     \}
+59   \}
+60 
+61   \textcolor{keywordflow}{return} 0;
+62 \}
+\end{DoxyCode}
+Here is the call graph for this function\+:
+% FIG 1
