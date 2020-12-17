@@ -6,7 +6,8 @@
  *
  * @author Gabriel Jonay Vera Estévez
  * @date 7.nov.2020
- * @brief Este programa encripta/desencripta la información de un fichero haciendo uso del metodo CESAR o XOR.
+ * @brief Este programa encripta/desencripta la información de un fichero
+ * haciendo uso del metodo CESAR o XOR.
  *
  */
 
@@ -48,6 +49,9 @@ int main(int argc, char* argv[]) {
       DecryptXor(input_file, output_file, password, KconstNumber);
     }
   }
+
+  std::cout << "Hay " << VocalCount(input_file)
+            << " repeticiones de la vocal 'u'.\n";
 
   return 0;
 }

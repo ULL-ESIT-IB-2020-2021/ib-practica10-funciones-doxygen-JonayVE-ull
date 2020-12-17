@@ -32,7 +32,7 @@ cripto: cripto.o cripto_main.o
 # and object files produced by the build process
 # We can use it for additional housekeeping purposes
 clean :
-	rm -rf *.o fibonacci_sum ../doc
+	rm -rf *.o cripto ../doc
 	rm -rf *~ basura b i
 	rm -rf a.out
 	find . -name '*~' -exec rm {} \;

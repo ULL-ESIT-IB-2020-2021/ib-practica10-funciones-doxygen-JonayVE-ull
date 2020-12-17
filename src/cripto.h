@@ -33,3 +33,4 @@ void EncryptXor(std::string input_file, std::string output_file,
                 std::string password, const int KconstNumber);
 void DecryptXor(std::string input_file, std::string output_file,
                 std::string password, const int KconstNumber);
+int VocalCount(std::string input_file);

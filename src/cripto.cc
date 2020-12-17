@@ -166,3 +166,17 @@ void EncryptXor(std::string input_file, std::string output_file,
     output << string_input << std::endl;
   }
 }
+
+int VocalCount(std::string input_file) {
+  int counter{0};
+  std::ifstream text{input_file};
+  std::string line;
+  while (std::getline(text, line)) {
+    for (auto character : line) {
+      if (character == 'u' || character == 'U') {
+        ++counter;
+      }
+    }
+  }
+  return counter;
+}
