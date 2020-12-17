@@ -1,0 +1,417 @@
+\hypertarget{cripto_8h}{}\doxysubsection{cripto.\+h File Reference}
+\label{cripto_8h}\index{cripto.h@{cripto.h}}
+{\ttfamily \#include $<$iostream$>$}\newline
+Include dependency graph for cripto.\+h\+:
+% FIG 0
+This graph shows which files directly or indirectly include this file\+:
+% FIG 1
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{cripto_8h_aeac332c082069f54e8769d311dd2049d}{Usage}} (int argc, char $\ast$argv\mbox{[}$\,$\mbox{]})
+\begin{DoxyCompactList}\small\item\em Universidad de La Laguna Escuela Superior de Ingeniería y Tecnología Grado en Ingeniería Informática Informática Básica. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{cripto_8h_a9599ac690f259e6607e7635cc65764b3}{Is\+File\+Open}} (std\+::string input\+\_\+file)
+\begin{DoxyCompactList}\small\item\em Encripta la información del archivo suministrado mediante el metodo C\+E\+S\+AR. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{cripto_8h_a29b86e425c598edfc5e3d5f9c20c4e32}{Encrypt\+Cesar}} (std\+::string input\+\_\+file, std\+::string output\+\_\+file, int key)
+\begin{DoxyCompactList}\small\item\em Encripta la información del archivo suministrado mediante el metodo C\+E\+S\+AR. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{cripto_8h_a68001226130d5aa6479d1f3c1a451866}{Decrypt\+Cesar}} (std\+::string input\+\_\+file, std\+::string output\+\_\+file, int key)
+\begin{DoxyCompactList}\small\item\em Encripta la información del archivo suministrado mediante el metodo C\+E\+S\+AR. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{cripto_8h_a0cb21f28d228ba7b524709bb1c68ff58}{Encrypt\+Xor}} (std\+::string input\+\_\+file, std\+::string output\+\_\+file, std\+::string password, const int Kconst\+Number)
+\begin{DoxyCompactList}\small\item\em Encripta la información del archivo suministrado mediante el metodo X\+OR. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{cripto_8h_a978ec3033ecb9e318549ac4de493db10}{Decrypt\+Xor}} (std\+::string input\+\_\+file, std\+::string output\+\_\+file, std\+::string password, const int Kconst\+Number)
+\begin{DoxyCompactList}\small\item\em Encripta la información del archivo suministrado mediante el metodo X\+OR. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{cripto_8h_a1735a73fc94c107b79784227b2dd0db2}{Vocal\+Count}} (std\+::string input\+\_\+file)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+const std\+::string \mbox{\hyperlink{cripto_8h_a08728caac9a53278aea6a3218ae1dfeb}{k\+Help\+Text}}
+\begin{DoxyCompactList}\small\item\em Universidad de La Laguna Escuela Superior de Ingeniería y Tecnología Grado en Ingeniería Informática Informática Básica. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsubsection{Function Documentation}
+\mbox{\Hypertarget{cripto_8h_a68001226130d5aa6479d1f3c1a451866}\label{cripto_8h_a68001226130d5aa6479d1f3c1a451866}} 
+\index{cripto.h@{cripto.h}!DecryptCesar@{DecryptCesar}}
+\index{DecryptCesar@{DecryptCesar}!cripto.h@{cripto.h}}
+\doxyparagraph{\texorpdfstring{DecryptCesar()}{DecryptCesar()}}
+{\footnotesize\ttfamily void Decrypt\+Cesar (\begin{DoxyParamCaption}\item[{std\+::string}]{input\+\_\+file,  }\item[{std\+::string}]{output\+\_\+file,  }\item[{int}]{key }\end{DoxyParamCaption})}
+
+
+
+Encripta la información del archivo suministrado mediante el metodo C\+E\+S\+AR. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em input\+\_\+file.} & Objeto stream que abre el archivo a desencriptar. \\
+\hline
+\mbox{\texttt{ in}}  & {\em output\+\_\+file.} & Objeto stream que abre el archivo donde escribir el codigo desencriptado. \\
+\hline
+\mbox{\texttt{ in}}  & {\em key.} & Clave de encriptación del metodo C\+E\+S\+AR. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+No retorna ningún valor, función void, crea un nuevo archivo desencriptado. 
+\end{DoxyReturn}
+
+
+Definition at line 98 of file cripto.\+cc.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{98                                                                         \{}
+\DoxyCodeLine{99   std::ifstream input\{input\_file\};}
+\DoxyCodeLine{100   std::ofstream output\{output\_file\};}
+\DoxyCodeLine{101 }
+\DoxyCodeLine{102   \textcolor{keywordflow}{while} (input) \{}
+\DoxyCodeLine{103     std::string string\_input;}
+\DoxyCodeLine{104     std::getline(input, string\_input);}
+\DoxyCodeLine{105     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} i = 0; i < string\_input.length(); ++i) \{}
+\DoxyCodeLine{106       string\_input[i] -\/= key;}
+\DoxyCodeLine{107     \}}
+\DoxyCodeLine{108     output << string\_input << std::endl;}
+\DoxyCodeLine{109   \}}
+\DoxyCodeLine{110 \}}
+
+\end{DoxyCode}
+
+
+Referenced by main().
+
+Here is the caller graph for this function\+:
+% FIG 2
+\mbox{\Hypertarget{cripto_8h_a978ec3033ecb9e318549ac4de493db10}\label{cripto_8h_a978ec3033ecb9e318549ac4de493db10}} 
+\index{cripto.h@{cripto.h}!DecryptXor@{DecryptXor}}
+\index{DecryptXor@{DecryptXor}!cripto.h@{cripto.h}}
+\doxyparagraph{\texorpdfstring{DecryptXor()}{DecryptXor()}}
+{\footnotesize\ttfamily void Decrypt\+Xor (\begin{DoxyParamCaption}\item[{std\+::string}]{input\+\_\+file,  }\item[{std\+::string}]{output\+\_\+file,  }\item[{std\+::string}]{password,  }\item[{const int}]{Kconst\+Number }\end{DoxyParamCaption})}
+
+
+
+Encripta la información del archivo suministrado mediante el metodo X\+OR. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em input\+\_\+file.} & Objeto stream que abre el archivo a desencriptar. \\
+\hline
+\mbox{\texttt{ in}}  & {\em output\+\_\+file.} & Objeto stream que abre el archivo donde escribir el codigo desencriptado. \\
+\hline
+\mbox{\texttt{ in}}  & {\em password.} & Clave de encriptación del metodo X\+OR. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+No retorna ningún valor, función void, crea un nuevo archivo desencriptado. 
+\end{DoxyReturn}
+
+
+Definition at line 121 of file cripto.\+cc.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{122                                                             \{}
+\DoxyCodeLine{123   \textcolor{keywordflow}{for} (\textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} i = 0; i > password.length(); ++i) \{}
+\DoxyCodeLine{124     password[i] \string^= KconstNumber;}
+\DoxyCodeLine{125   \}}
+\DoxyCodeLine{126 }
+\DoxyCodeLine{127   std::ifstream input\{input\_file\};}
+\DoxyCodeLine{128   std::ofstream output\{output\_file\};}
+\DoxyCodeLine{129 }
+\DoxyCodeLine{130   \textcolor{keywordflow}{while} (input) \{}
+\DoxyCodeLine{131     std::string string\_input;}
+\DoxyCodeLine{132     std::getline(input, string\_input);}
+\DoxyCodeLine{133 }
+\DoxyCodeLine{134     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} i = 0; i < string\_input.length(); ++i) \{}
+\DoxyCodeLine{135       string\_input[i] \string^= password[i \% password.length() -\/ 1];}
+\DoxyCodeLine{136     \}}
+\DoxyCodeLine{137     output << string\_input << std::endl;}
+\DoxyCodeLine{138   \}}
+\DoxyCodeLine{139 \}}
+
+\end{DoxyCode}
+
+
+Referenced by main().
+
+Here is the caller graph for this function\+:
+% FIG 3
+\mbox{\Hypertarget{cripto_8h_a29b86e425c598edfc5e3d5f9c20c4e32}\label{cripto_8h_a29b86e425c598edfc5e3d5f9c20c4e32}} 
+\index{cripto.h@{cripto.h}!EncryptCesar@{EncryptCesar}}
+\index{EncryptCesar@{EncryptCesar}!cripto.h@{cripto.h}}
+\doxyparagraph{\texorpdfstring{EncryptCesar()}{EncryptCesar()}}
+{\footnotesize\ttfamily void Encrypt\+Cesar (\begin{DoxyParamCaption}\item[{std\+::string}]{input\+\_\+file,  }\item[{std\+::string}]{output\+\_\+file,  }\item[{int}]{key }\end{DoxyParamCaption})}
+
+
+
+Encripta la información del archivo suministrado mediante el metodo C\+E\+S\+AR. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em input\+\_\+file.} & Objeto stream que abre el archivo a encriptar. \\
+\hline
+\mbox{\texttt{ in}}  & {\em output\+\_\+file.} & Objeto stream que abre el archivo donde escribir el codigo encriptado. \\
+\hline
+\mbox{\texttt{ in}}  & {\em key.} & Clave de encriptación del metodo C\+E\+S\+AR. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+No retorna ningún valor, función void, crea un nuevo archivo encriptado. 
+\end{DoxyReturn}
+
+
+Definition at line 75 of file cripto.\+cc.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{75                                                                         \{}
+\DoxyCodeLine{76   std::ifstream input\{input\_file\};}
+\DoxyCodeLine{77   std::ofstream output\{output\_file\};}
+\DoxyCodeLine{78 }
+\DoxyCodeLine{79   \textcolor{keywordflow}{while} (input) \{}
+\DoxyCodeLine{80     std::string string\_input;}
+\DoxyCodeLine{81     std::getline(input, string\_input);}
+\DoxyCodeLine{82     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} i = 0; i < string\_input.length(); ++i) \{}
+\DoxyCodeLine{83       string\_input[i] += key;}
+\DoxyCodeLine{84     \}}
+\DoxyCodeLine{85     output << string\_input << std::endl;}
+\DoxyCodeLine{86   \}}
+\DoxyCodeLine{87 \}}
+
+\end{DoxyCode}
+
+
+Referenced by main().
+
+Here is the caller graph for this function\+:
+% FIG 4
+\mbox{\Hypertarget{cripto_8h_a0cb21f28d228ba7b524709bb1c68ff58}\label{cripto_8h_a0cb21f28d228ba7b524709bb1c68ff58}} 
+\index{cripto.h@{cripto.h}!EncryptXor@{EncryptXor}}
+\index{EncryptXor@{EncryptXor}!cripto.h@{cripto.h}}
+\doxyparagraph{\texorpdfstring{EncryptXor()}{EncryptXor()}}
+{\footnotesize\ttfamily void Encrypt\+Xor (\begin{DoxyParamCaption}\item[{std\+::string}]{input\+\_\+file,  }\item[{std\+::string}]{output\+\_\+file,  }\item[{std\+::string}]{password,  }\item[{const int}]{Kconst\+Number }\end{DoxyParamCaption})}
+
+
+
+Encripta la información del archivo suministrado mediante el metodo X\+OR. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em input\+\_\+file.} & Objeto stream que abre el archivo a encriptar. \\
+\hline
+\mbox{\texttt{ in}}  & {\em output\+\_\+file.} & Objeto stream que abre el archivo donde escribir el codigo encriptado. \\
+\hline
+\mbox{\texttt{ in}}  & {\em key.} & Clave de encriptación del metodo X\+OR. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+No retorna ningún valor, función void, crea un nuevo archivo encriptado. 
+\end{DoxyReturn}
+
+
+Definition at line 150 of file cripto.\+cc.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{151                                                             \{}
+\DoxyCodeLine{152   \textcolor{keywordflow}{for} (\textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} i = 0; i > password.length(); ++i) \{}
+\DoxyCodeLine{153     password[i] \string^= KconstNumber;}
+\DoxyCodeLine{154   \}}
+\DoxyCodeLine{155 }
+\DoxyCodeLine{156   std::ifstream input\{input\_file\};}
+\DoxyCodeLine{157   std::ofstream output\{output\_file\};}
+\DoxyCodeLine{158 }
+\DoxyCodeLine{159   \textcolor{keywordflow}{while} (input) \{}
+\DoxyCodeLine{160     std::string string\_input;}
+\DoxyCodeLine{161     std::getline(input, string\_input);}
+\DoxyCodeLine{162 }
+\DoxyCodeLine{163     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} i = 0; i < string\_input.length(); ++i) \{}
+\DoxyCodeLine{164       string\_input[i] \string^= password[i \% password.length() -\/ 1];}
+\DoxyCodeLine{165     \}}
+\DoxyCodeLine{166     output << string\_input << std::endl;}
+\DoxyCodeLine{167   \}}
+\DoxyCodeLine{168 \}}
+
+\end{DoxyCode}
+
+
+Referenced by main().
+
+Here is the caller graph for this function\+:
+% FIG 5
+\mbox{\Hypertarget{cripto_8h_a9599ac690f259e6607e7635cc65764b3}\label{cripto_8h_a9599ac690f259e6607e7635cc65764b3}} 
+\index{cripto.h@{cripto.h}!IsFileOpen@{IsFileOpen}}
+\index{IsFileOpen@{IsFileOpen}!cripto.h@{cripto.h}}
+\doxyparagraph{\texorpdfstring{IsFileOpen()}{IsFileOpen()}}
+{\footnotesize\ttfamily bool Is\+File\+Open (\begin{DoxyParamCaption}\item[{std\+::string}]{input\+\_\+file }\end{DoxyParamCaption})}
+
+
+
+Encripta la información del archivo suministrado mediante el metodo C\+E\+S\+AR. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em input\+\_\+file.} & Objeto stream que abre el archivo a encriptar. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Devuelve \textquotesingle{}true\textquotesingle{} si el archivo se pudo abrir, de lo contrario devuelve \textquotesingle{}false\textquotesingle{}. 
+\end{DoxyReturn}
+
+
+Definition at line 56 of file cripto.\+cc.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{56                                       \{}
+\DoxyCodeLine{57   std::ifstream input\{input\_file\};}
+\DoxyCodeLine{58 }
+\DoxyCodeLine{59   \textcolor{keywordflow}{if} (!input) \{}
+\DoxyCodeLine{60     std::cerr << \textcolor{stringliteral}{"No se pude abir el fichero\(\backslash\)n"};}
+\DoxyCodeLine{61     exit(EXIT\_SUCCESS);}
+\DoxyCodeLine{62   \}}
+\DoxyCodeLine{63   \textcolor{keywordflow}{return} \textcolor{keyword}{true};}
+\DoxyCodeLine{64 \}}
+
+\end{DoxyCode}
+
+
+Referenced by main().
+
+Here is the caller graph for this function\+:
+% FIG 6
+\mbox{\Hypertarget{cripto_8h_aeac332c082069f54e8769d311dd2049d}\label{cripto_8h_aeac332c082069f54e8769d311dd2049d}} 
+\index{cripto.h@{cripto.h}!Usage@{Usage}}
+\index{Usage@{Usage}!cripto.h@{cripto.h}}
+\doxyparagraph{\texorpdfstring{Usage()}{Usage()}}
+{\footnotesize\ttfamily void Usage (\begin{DoxyParamCaption}\item[{int}]{argc,  }\item[{char $\ast$}]{argv\mbox{[}$\,$\mbox{]} }\end{DoxyParamCaption})}
+
+
+
+Universidad de La Laguna Escuela Superior de Ingeniería y Tecnología Grado en Ingeniería Informática Informática Básica. 
+
+\begin{DoxyAuthor}{Author}
+Gabriel Jonay Vera Estévez 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+16/12/2020
+\end{DoxyDate}
+A través del metodo X\+OR y C\+E\+S\+AR podemos encriptar y desencriptar textos que sean pasados al usuario. \begin{DoxySeeAlso}{See also}
+\href{https://www.learncpp.com/cpp-tutorial/bitwise-operators/}{\texttt{ https\+://www.\+learncpp.\+com/cpp-\/tutorial/bitwise-\/operators/}} Muestra el modo de uso correcto del programa En caso de que el uso no sea el correcto, muestra el mensaje y finaliza la ejecución del programa. El programa precisa un único número natural para su ejecución.
+\end{DoxySeeAlso}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em argc} & Number of command line parameters \\
+\hline
+\mbox{\texttt{ in}}  & {\em argv} & Vector containing (char$\ast$) the parameters \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 30 of file cripto.\+cc.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{30                                    \{}
+\DoxyCodeLine{31   \textcolor{keywordflow}{if} (argc != 6) \{}
+\DoxyCodeLine{32     \textcolor{keywordflow}{if} (argc == 2) \{}
+\DoxyCodeLine{33       std::string parameter\{argv[1]\};}
+\DoxyCodeLine{34       \textcolor{keywordflow}{if} (parameter == \textcolor{stringliteral}{"-\/-\/help"}) \{}
+\DoxyCodeLine{35         std::cout << \mbox{\hyperlink{cripto_8h_a08728caac9a53278aea6a3218ae1dfeb}{kHelpText}} << std::endl;}
+\DoxyCodeLine{36         exit(EXIT\_SUCCESS);}
+\DoxyCodeLine{37       \}}
+\DoxyCodeLine{38     \}}
+\DoxyCodeLine{39 }
+\DoxyCodeLine{40     std::cout << argv[0] << \textcolor{stringliteral}{"-\/-\/ Cifrado de ficheros\(\backslash\)n"};}
+\DoxyCodeLine{41     std::cout << \textcolor{stringliteral}{"Modo de uso: ./cripto fichero\_entrada fichero\_salida método "}}
+\DoxyCodeLine{42                  \textcolor{stringliteral}{"password operación\(\backslash\)n"};}
+\DoxyCodeLine{43     std::cout << \textcolor{stringliteral}{"Pruebe "} << argv[0] << \textcolor{stringliteral}{" -\/-\/help para más información"}}
+\DoxyCodeLine{44               << std::endl;}
+\DoxyCodeLine{45     exit(EXIT\_SUCCESS);}
+\DoxyCodeLine{46   \}}
+\DoxyCodeLine{47 \}}
+
+\end{DoxyCode}
+
+
+References k\+Help\+Text.
+
+
+
+Referenced by main().
+
+Here is the caller graph for this function\+:
+% FIG 7
+\mbox{\Hypertarget{cripto_8h_a1735a73fc94c107b79784227b2dd0db2}\label{cripto_8h_a1735a73fc94c107b79784227b2dd0db2}} 
+\index{cripto.h@{cripto.h}!VocalCount@{VocalCount}}
+\index{VocalCount@{VocalCount}!cripto.h@{cripto.h}}
+\doxyparagraph{\texorpdfstring{VocalCount()}{VocalCount()}}
+{\footnotesize\ttfamily int Vocal\+Count (\begin{DoxyParamCaption}\item[{std\+::string}]{input\+\_\+file }\end{DoxyParamCaption})}
+
+
+
+Definition at line 170 of file cripto.\+cc.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{170                                      \{}
+\DoxyCodeLine{171   \textcolor{keywordtype}{int} counter\{0\};}
+\DoxyCodeLine{172   std::ifstream text\{input\_file\};}
+\DoxyCodeLine{173   std::string line;}
+\DoxyCodeLine{174   \textcolor{keywordflow}{while} (std::getline(text, line)) \{}
+\DoxyCodeLine{175     \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} character : line) \{}
+\DoxyCodeLine{176       \textcolor{keywordflow}{if} (character == \textcolor{charliteral}{'u'} || character == \textcolor{charliteral}{'U'}) \{}
+\DoxyCodeLine{177         ++counter;}
+\DoxyCodeLine{178       \}}
+\DoxyCodeLine{179     \}}
+\DoxyCodeLine{180   \}}
+\DoxyCodeLine{181   \textcolor{keywordflow}{return} counter;}
+\DoxyCodeLine{182 \}}
+
+\end{DoxyCode}
+
+
+Referenced by main().
+
+Here is the caller graph for this function\+:
+% FIG 8
+
+
+\doxysubsubsection{Variable Documentation}
+\mbox{\Hypertarget{cripto_8h_a08728caac9a53278aea6a3218ae1dfeb}\label{cripto_8h_a08728caac9a53278aea6a3218ae1dfeb}} 
+\index{cripto.h@{cripto.h}!kHelpText@{kHelpText}}
+\index{kHelpText@{kHelpText}!cripto.h@{cripto.h}}
+\doxyparagraph{\texorpdfstring{kHelpText}{kHelpText}}
+{\footnotesize\ttfamily const std\+::string k\+Help\+Text}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{=}
+\DoxyCodeLine{    \textcolor{stringliteral}{"./cripto -\/-\/ Cifrado de ficheros\(\backslash\)n\(\backslash\)}}
+\DoxyCodeLine{\textcolor{stringliteral}{Modo de uso: ./cripto fichero\_entrada fichero\_salida método password operación\(\backslash\)n\(\backslash\)n\(\backslash\)}}
+\DoxyCodeLine{\textcolor{stringliteral}{fichero\_entrada: Fichero a codificar\(\backslash\)n\(\backslash\)}}
+\DoxyCodeLine{\textcolor{stringliteral}{fichero\_salida:  Fichero codificado\(\backslash\)n\(\backslash\)}}
+\DoxyCodeLine{\textcolor{stringliteral}{método:          Indica el método de encriptado\(\backslash\)n\(\backslash\)}}
+\DoxyCodeLine{\textcolor{stringliteral}{                   1: Cifrado\_xor \(\backslash\)n\(\backslash\)}}
+\DoxyCodeLine{\textcolor{stringliteral}{                   2: Cifrado\_Cesar\(\backslash\)n\(\backslash\)}}
+\DoxyCodeLine{\textcolor{stringliteral}{password:        Palabra secreta en el caso de método 1, Valor de K en el método 2\(\backslash\)n\(\backslash\)}}
+\DoxyCodeLine{\textcolor{stringliteral}{operación:       Operación a realizar en el fichero\(\backslash\)n\(\backslash\)}}
+\DoxyCodeLine{\textcolor{stringliteral}{                   +: encriptar el fichero\(\backslash\)n\(\backslash\)}}
+\DoxyCodeLine{\textcolor{stringliteral}{                   -\/: desencriptar el fichero;\(\backslash\)n"}}
+
+\end{DoxyCode}
+
+
+Universidad de La Laguna Escuela Superior de Ingeniería y Tecnología Grado en Ingeniería Informática Informática Básica. 
+
+\begin{DoxyAuthor}{Author}
+Gabriel Jonay Vera Estévez 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+16.\+dic.\+2020
+\end{DoxyDate}
+This file declares the \char`\"{}\+Help Text\char`\"{} constant and two functions 
+
+Definition at line 15 of file cripto.\+h.
+
+
+
+Referenced by Usage().
+

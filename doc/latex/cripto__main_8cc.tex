@@ -1,0 +1,87 @@
+\hypertarget{cripto__main_8cc}{}\doxysubsection{cripto\+\_\+main.\+cc File Reference}
+\label{cripto__main_8cc}\index{cripto\_main.cc@{cripto\_main.cc}}
+{\ttfamily \#include $<$fstream$>$}\newline
+{\ttfamily \#include $<$iostream$>$}\newline
+{\ttfamily \#include $<$string$>$}\newline
+{\ttfamily \#include \char`\"{}cripto.\+h\char`\"{}}\newline
+Include dependency graph for cripto\+\_\+main.\+cc\+:
+% FIG 0
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{cripto__main_8cc_a0ddf1224851353fc92bfbff6f499fa97}{main}} (int argc, char $\ast$argv\mbox{[}$\,$\mbox{]})
+\begin{DoxyCompactList}\small\item\em Universidad de La Laguna Escuela Superior de Ingeniería y Tecnología Grado en Ingeniería Informática Informática Básica. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsubsection{Function Documentation}
+\mbox{\Hypertarget{cripto__main_8cc_a0ddf1224851353fc92bfbff6f499fa97}\label{cripto__main_8cc_a0ddf1224851353fc92bfbff6f499fa97}} 
+\index{cripto\_main.cc@{cripto\_main.cc}!main@{main}}
+\index{main@{main}!cripto\_main.cc@{cripto\_main.cc}}
+\doxyparagraph{\texorpdfstring{main()}{main()}}
+{\footnotesize\ttfamily int main (\begin{DoxyParamCaption}\item[{int}]{argc,  }\item[{char $\ast$}]{argv\mbox{[}$\,$\mbox{]} }\end{DoxyParamCaption})}
+
+
+
+Universidad de La Laguna Escuela Superior de Ingeniería y Tecnología Grado en Ingeniería Informática Informática Básica. 
+
+\begin{DoxyAuthor}{Author}
+Gabriel Jonay Vera Estévez 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+7.\+nov.\+2020
+\end{DoxyDate}
+Este programa encripta/desencripta la información de un fichero haciendo uso del metodo C\+E\+S\+AR o X\+OR. exit Main function 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em argc} & Number of command line parameters \\
+\hline
+\mbox{\texttt{ in}}  & {\em argv} & Vector containing (char$\ast$) the parameters \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 24 of file cripto\+\_\+main.\+cc.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{24                                  \{}
+\DoxyCodeLine{25   \mbox{\hyperlink{cripto_8cc_aeac332c082069f54e8769d311dd2049d}{Usage}}(argc, argv);}
+\DoxyCodeLine{26 }
+\DoxyCodeLine{27   std::string input\_file = argv[1];}
+\DoxyCodeLine{28   std::string output\_file = argv[2];}
+\DoxyCodeLine{29   \textcolor{keywordtype}{char} method = argv[3][0];}
+\DoxyCodeLine{30   std::string password = argv[4];}
+\DoxyCodeLine{31   \textcolor{keywordtype}{int} key\{0\};}
+\DoxyCodeLine{32   \textcolor{keywordtype}{char} operation = argv[5][0];}
+\DoxyCodeLine{33   \textcolor{keyword}{const} \textcolor{keywordtype}{int} KconstNumber = 128;}
+\DoxyCodeLine{34 }
+\DoxyCodeLine{35   \mbox{\hyperlink{cripto_8cc_a9599ac690f259e6607e7635cc65764b3}{IsFileOpen}}(input\_file);}
+\DoxyCodeLine{36 }
+\DoxyCodeLine{37   \textcolor{keywordflow}{if} (operation == \textcolor{charliteral}{'+'}) \{}
+\DoxyCodeLine{38     \textcolor{keywordflow}{if} (method == \textcolor{charliteral}{'2'}) \{}
+\DoxyCodeLine{39       key = std::stoi(password);}
+\DoxyCodeLine{40       \mbox{\hyperlink{cripto_8cc_a29b86e425c598edfc5e3d5f9c20c4e32}{EncryptCesar}}(input\_file, output\_file, key);}
+\DoxyCodeLine{41     \} \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (method == \textcolor{charliteral}{'1'}) \{}
+\DoxyCodeLine{42       \mbox{\hyperlink{cripto_8cc_a0cb21f28d228ba7b524709bb1c68ff58}{EncryptXor}}(input\_file, output\_file, password, KconstNumber);}
+\DoxyCodeLine{43     \}}
+\DoxyCodeLine{44   \} \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (operation == \textcolor{charliteral}{'-\/'}) \{}
+\DoxyCodeLine{45     \textcolor{keywordflow}{if} (method == \textcolor{charliteral}{'2'}) \{}
+\DoxyCodeLine{46       key = std::stoi(password);}
+\DoxyCodeLine{47       \mbox{\hyperlink{cripto_8cc_a68001226130d5aa6479d1f3c1a451866}{DecryptCesar}}(input\_file, output\_file, key);}
+\DoxyCodeLine{48     \} \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (method == \textcolor{charliteral}{'1'}) \{}
+\DoxyCodeLine{49       \mbox{\hyperlink{cripto_8cc_a978ec3033ecb9e318549ac4de493db10}{DecryptXor}}(input\_file, output\_file, password, KconstNumber);}
+\DoxyCodeLine{50     \}}
+\DoxyCodeLine{51   \}}
+\DoxyCodeLine{52 }
+\DoxyCodeLine{53   std::cout << \textcolor{stringliteral}{"Hay "} << \mbox{\hyperlink{cripto_8cc_a1735a73fc94c107b79784227b2dd0db2}{VocalCount}}(input\_file)}
+\DoxyCodeLine{54             << \textcolor{stringliteral}{" repeticiones de la vocal 'u'.\(\backslash\)n"};}
+\DoxyCodeLine{55 }
+\DoxyCodeLine{56   \textcolor{keywordflow}{return} 0;}
+\DoxyCodeLine{57 \}}
+
+\end{DoxyCode}
+
+
+References Decrypt\+Cesar(), Decrypt\+Xor(), Encrypt\+Cesar(), Encrypt\+Xor(), Is\+File\+Open(), Usage(), and Vocal\+Count().
+
+Here is the call graph for this function\+:
+% FIG 1
